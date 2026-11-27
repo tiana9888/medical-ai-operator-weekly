@@ -49,7 +49,7 @@ def check(text):
             brief = normalized[positions[3] + 1:positions[4]]
             n_events = sum(bool(re.match(r"^【.+?】", s)) for s in brief)
             if not 3 <= n_events <= 5:
-                warnings.append(f"速览检测到{n_events}条，通常为3—5条")
+                warnings.append(f"速览检测到{n_events}条，应不超过5条")
             if "\n".join(brief).count("来源与延伸阅读：") < n_events:
                 errors.append("速览来源行少于事件条数")
             action = "\n".join(normalized[positions[4] + 1:endings[0]])
